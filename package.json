@@ -49,6 +49,36 @@
       "svelte": "./dist/components/gutter/index.js",
       "default": "./dist/components/gutter/index.js"
     },
+    "./indicators": {
+      "types": "./dist/components/indicators/index.d.ts",
+      "svelte": "./dist/components/indicators/index.js",
+      "default": "./dist/components/indicators/index.js"
+    },
+    "./content": {
+      "types": "./dist/components/content/index.d.ts",
+      "svelte": "./dist/components/content/index.js",
+      "default": "./dist/components/content/index.js"
+    },
+    "./forms": {
+      "types": "./dist/components/forms/index.d.ts",
+      "svelte": "./dist/components/forms/index.js",
+      "default": "./dist/components/forms/index.js"
+    },
+    "./icons": {
+      "types": "./dist/components/icons/index.d.ts",
+      "svelte": "./dist/components/icons/index.js",
+      "default": "./dist/components/icons/index.js"
+    },
+    "./states": {
+      "types": "./dist/components/states/index.d.ts",
+      "svelte": "./dist/components/states/index.js",
+      "default": "./dist/components/states/index.js"
+    },
+    "./charts": {
+      "types": "./dist/components/charts/index.d.ts",
+      "svelte": "./dist/components/charts/index.js",
+      "default": "./dist/components/charts/index.js"
+    },
     "./primitives/*": {
       "types": "./dist/components/primitives/*/index.d.ts",
       "svelte": "./dist/components/primitives/*/index.js",
