@@ -1,0 +1,27 @@
+// GroveUI - Basic UI Components
+//
+// This module exports all basic UI components:
+// Button, Card, Input, Dialog, Select, Tabs, Accordion, Badge, etc.
+//
+// Usage:
+//   import { Button, Card } from '@groveengine/ui/ui';
+
+// Wrapper components will be exported here after extraction from GroveEngine
+// Example exports (to be uncommented when components are added):
+//
+// export { default as Button } from './Button.svelte';
+// export { default as Card } from './Card.svelte';
+// export { default as Badge } from './Badge.svelte';
+// export { default as Dialog } from './Dialog.svelte';
+// export { default as Input } from './Input.svelte';
+// export { default as Textarea } from './Textarea.svelte';
+// export { default as Select } from './Select.svelte';
+// export { default as Tabs } from './Tabs.svelte';
+// export { default as Accordion } from './Accordion.svelte';
+// export { default as Sheet } from './Sheet.svelte';
+// export { default as Toast } from './Toast.svelte';
+// export { default as Skeleton } from './Skeleton.svelte';
+// export { default as Table } from './Table.svelte';
+
+// Placeholder export to prevent empty module errors
+export const UI_VERSION = '0.2.0';

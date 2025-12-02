@@ -1,177 +1,171 @@
-# Project Instructions - Agent Workflows
+# GroveUI - Agent Instructions
 
-> **Note**: This is the main orchestrator file. For detailed guides, see `AgentUsage/README.md`
+> **Project**: Grove Design System (`@groveengine/ui`)
+> **Purpose**: Dedicated UI component library for the Grove platform
 
 ---
 
 ## Project Purpose
-[Fill in: What this project does - 1-2 sentences]
+
+GroveUI is the centralized UI layer for the Grove ecosystem. It provides all UI components, design tokens, and styles used by GroveEngine and grove.place websites.
 
 ## Tech Stack
-[Fill in: Technologies, frameworks, and languages used]
-- Language:
-- Framework:
-- Key Libraries:
-- Package Manager:
+
+- **Language**: TypeScript
+- **Framework**: SvelteKit 5 + Svelte 5
+- **Styling**: Tailwind CSS 3.4+
+- **Component Library**: bits-ui (headless components)
+- **Package Manager**: pnpm
+- **Deployment**: Cloudflare Pages (demo site)
+- **Publishing**: npm (`@groveengine/ui`)
 
 ## Architecture Notes
-[Fill in: Key architectural decisions, patterns, or structure]
+
+- **Single package** with subpath exports (`/ui`, `/gallery`, `/editor`, `/gutter`)
+- **Dual purpose**: npm library + demo documentation site
+- **Built with `svelte-package`** for library distribution
+- **Design tokens** in both TypeScript and Tailwind preset format
 
 ---
 
-## Essential Instructions (Always Follow)
+## Essential Instructions
 
 ### Core Behavior
 - Do what has been asked; nothing more, nothing less
-- NEVER create files unless absolutely necessary for achieving your goal
 - ALWAYS prefer editing existing files to creating new ones
-- NEVER proactively create documentation files (*.md) or README files unless explicitly requested
+- NEVER proactively create documentation files unless explicitly requested
 
-### Naming Conventions
-- **Directories**: Use CamelCase (e.g., `VideoProcessor`, `AudioTools`, `DataAnalysis`)
-- **Date-based paths**: Use skewer-case with YYYY-MM-DD (e.g., `logs-2025-01-15`, `backup-2025-12-31`)
-- **No spaces or underscores** in directory names (except date-based paths)
+### Svelte 5 Patterns
 
-### TODO Management
-- **Always check `TODOS.md` first** when starting a task or session
-- **Update immediately** when tasks are completed, added, or changed
-- Keep the list current and manageable
+**Always use Svelte 5 runes syntax:**
 
-### Git Workflow Essentials
+```svelte
+<script lang="ts">
+  // Props with $props()
+  let { variant = 'default', children } = $props();
 
-**After completing major changes, you MUST commit your work.**
+  // State with $state()
+  let count = $state(0);
+
+  // Derived with $derived()
+  let doubled = $derived(count * 2);
+
+  // Effects with $effect()
+  $effect(() => {
+    console.log('count changed:', count);
+  });
+</script>
+
+<!-- Render children with @render -->
+{@render children?.()}
+```
+
+### Component Patterns
+
+**Wrapper component structure:**
+
+```svelte
+<script lang="ts">
+  import { cn } from '$lib/utils/cn.js';
+  import type { Snippet } from 'svelte';
+
+  interface Props {
+    variant?: 'default' | 'outline' | 'ghost';
+    size?: 'sm' | 'md' | 'lg';
+    class?: string;
+    children?: Snippet;
+  }
+
+  let { variant = 'default', size = 'md', class: className, children }: Props = $props();
+</script>
+
+<button class={cn(baseStyles, variantStyles[variant], sizeStyles[size], className)}>
+  {@render children?.()}
+</button>
+```
+
+### File Organization
+
+```
+src/lib/
+├── components/
+│   ├── ui/           # Basic components (Button, Card, etc.)
+│   ├── gallery/      # Media components
+│   ├── editor/       # Editor components
+│   ├── gutter/       # Gutter system
+│   └── primitives/   # Low-level bits-ui wrappers
+├── tokens/           # Design tokens
+├── styles/           # CSS files
+├── utils/            # Utilities (cn, etc.)
+└── index.ts          # Main exports
+```
+
+### Export Conventions
+
+Each category has an `index.ts` barrel export:
+
+```typescript
+// src/lib/components/ui/index.ts
+export { default as Button } from './Button.svelte';
+export { default as Card } from './Card.svelte';
+// ...
+```
+
+---
+
+## Git Workflow
 
 **Conventional Commits Format:**
 ```bash
 <type>: <brief description>
 
-<optional body>
-
 🤖 Generated with [Claude Code](https://claude.ai/code)
 
-Co-Authored-By: [Model Name] <agent@localhost>
+Co-Authored-By: Claude <noreply@anthropic.com>
 ```
 
-**Common Types:** `feat`, `fix`, `docs`, `refactor`, `test`, `chore`, `perf`
+**Types:** `feat`, `fix`, `docs`, `refactor`, `test`, `chore`, `style`
 
-**Examples:**
+---
+
+## When to Read Guides
+
+| Situation | Guide |
+|-----------|-------|
+| Svelte 5 patterns, runes syntax | `AgentUsage/svelte5_guide.md` |
+| Cloudflare deployment | `AgentUsage/cloudflare_guide.md` |
+| Git workflow | `AgentUsage/git_guide.md` |
+| Testing components | `AgentUsage/testing_javascript.md` |
+| Code style | `AgentUsage/code_style_guide.md` |
+
+---
+
+## Key Files
+
+| File | Purpose |
+|------|---------|
+| `src/lib/index.ts` | Main package entry point |
+| `src/lib/tailwind.preset.js` | Tailwind CSS preset with Grove tokens |
+| `src/lib/utils/cn.ts` | Class name utility |
+| `package.json` | Package config with subpath exports |
+
+---
+
+## Development Commands
+
 ```bash
-feat: Add user authentication
-fix: Correct timezone bug
-docs: Update README
+# Development
+pnpm dev              # Start dev server
+pnpm build            # Build demo site
+pnpm package          # Build npm package
+pnpm check            # TypeScript check
+
+# Testing
+pnpm test             # Run tests
+pnpm test:ui          # Run tests with UI
 ```
 
-**For complete details:** See `AgentUsage/git_guide.md`
-
 ---
 
-## When to Read Specific Guides
-
-**Read the full guide in `AgentUsage/` when you encounter these situations:**
-
-### Secrets & API Keys
-- **When managing API keys or secrets** → Read `AgentUsage/secrets_management.md`
-- **Before implementing secrets loading** → Read `AgentUsage/secrets_management.md`
-- **When integrating external APIs** → Read `AgentUsage/api_usage.md`
-
-### Cloudflare Development
-- **When deploying to Cloudflare** → Read `AgentUsage/cloudflare_guide.md`
-- **Before using Cloudflare Workers, KV, R2, or D1** → Read `AgentUsage/cloudflare_guide.md`
-- **When setting up Cloudflare MCP server** → Read `AgentUsage/cloudflare_guide.md`
-
-### Package Management
-- **When using UV package manager** → Read `AgentUsage/uv_usage.md`
-- **Before creating pyproject.toml** → Read `AgentUsage/uv_usage.md`
-- **When managing Python dependencies** → Read `AgentUsage/uv_usage.md`
-
-### Version Control
-- **Before making a git commit** → Read `AgentUsage/git_guide.md`
-- **When initializing a new repo** → Read `AgentUsage/git_guide.md`
-- **For git workflow and branching** → Read `AgentUsage/git_guide.md`
-- **For conventional commits reference** → Read `AgentUsage/git_guide.md`
-
-### Database Management
-- **When working with databases** → Read `AgentUsage/db_usage.md`
-- **Before implementing data persistence** → Read `AgentUsage/db_usage.md`
-- **For database.py template** → Read `AgentUsage/db_usage.md`
-
-### Search & Research
-- **When searching across 20+ files** → Read `AgentUsage/house_agents.md`
-- **When finding patterns in codebase** → Read `AgentUsage/house_agents.md`
-- **When locating TODOs/FIXMEs** → Read `AgentUsage/house_agents.md`
-
-### Testing
-- **Before writing Python tests** → Read `AgentUsage/testing_python.md`
-- **Before writing JavaScript/TypeScript tests** → Read `AgentUsage/testing_javascript.md`
-- **Before writing Go tests** → Read `AgentUsage/testing_go.md`
-- **Before writing Rust tests** → Read `AgentUsage/testing_rust.md`
-
-
-### Code Quality
-- **When refactoring code** → Read `AgentUsage/code_style_guide.md`
-- **Before major code changes** → Read `AgentUsage/code_style_guide.md`
-- **For style guidelines** → Read `AgentUsage/code_style_guide.md`
-
-### Project Setup
-- **When starting a new project** → Read `AgentUsage/project_setup.md`
-- **For directory structure** → Read `AgentUsage/project_setup.md`
-- **Setting up CI/CD** → Read `AgentUsage/project_setup.md`
-
----
-
-## Quick Reference
-
-### Security Basics
-- Store API keys in `secrets.json` (NEVER commit)
-- Add `secrets.json` to `.gitignore` immediately
-- Provide `secrets_template.json` for setup
-- Use environment variables as fallbacks
-
-
-### House Agents Quick Trigger
-**When searching 20+ files**, use house-research for:
-- Finding patterns across codebase
-- Searching TODO/FIXME comments
-- Locating API endpoints or functions
-- Documentation searches
-
----
-
-## Code Style Guidelines
-
-### Function & Variable Naming
-- Use meaningful, descriptive names
-- Keep functions small and focused on single responsibilities
-- Add docstrings to functions and classes
-
-### Error Handling
-- Use try/except blocks gracefully
-- Provide helpful error messages
-- Never let errors fail silently
-
-### File Organization
-- Group related functionality into modules
-- Use consistent import ordering:
-  1. Standard library
-  2. Third-party packages
-  3. Local imports
-- Keep configuration separate from logic
-
----
-
-## Communication Style
-- Be concise but thorough
-- Explain reasoning for significant decisions
-- Ask for clarification when requirements are ambiguous
-- Proactively suggest improvements when appropriate
-
----
-
-## Complete Guide Index
-For all detailed guides, workflows, and examples, see:
-**`AgentUsage/README.md`** - Master index of all documentation
-
----
-
-*Last updated: 2025-11-28*
-*Model: Claude Sonnet 4.5*
+*Last updated: 2025-12-02*
+*For: Claude Code CLI*

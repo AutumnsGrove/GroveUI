@@ -1,0 +1,16 @@
+# GroveUI - Demo Site Configuration
+# Cloudflare Pages deployment for the GroveUI documentation and playground
+#
+# NOTE: This is for the demo site only. The npm package is published separately.
+
+name = "grove-ui"
+compatibility_date = "2025-01-01"
+
+# Cloudflare Pages output
+pages_build_output_dir = ".svelte-kit/cloudflare"
+
+# Environment variables for demo site
+[vars]
+PUBLIC_SITE_NAME = "GroveUI"
+PUBLIC_SITE_DESCRIPTION = "Grove Design System - A calm, organic component library"
+PUBLIC_SITE_URL = "https://ui.grove.place"

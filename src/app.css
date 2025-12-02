@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Grove Design System - Base Styles */
+
+@layer base {
+	/* Smooth scrolling for the whole page */
+	html {
+		scroll-behavior: smooth;
+	}
+
+	/* Default body styling */
+	body {
+		@apply bg-cream text-bark;
+		font-feature-settings: 'liga' 1, 'kern' 1;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+	/* Selection styling */
+	::selection {
+		@apply bg-grove-200 text-grove-900;
+	}
+
+	/* Focus visible for accessibility */
+	:focus-visible {
+		@apply outline-none ring-2 ring-grove-500 ring-offset-2 ring-offset-cream;
+	}
+}
