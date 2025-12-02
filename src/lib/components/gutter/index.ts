@@ -9,15 +9,12 @@
 // Usage:
 //   import { ContentWithGutter, TableOfContents } from '@groveengine/ui/gutter';
 
-// Gutter components will be exported here after extraction from GroveEngine
-// Example exports (to be uncommented when components are added):
-//
-// export { default as ContentWithGutter } from './ContentWithGutter.svelte';
-// export { default as LeftGutter } from './LeftGutter.svelte';
-// export { default as GutterItem } from './GutterItem.svelte';
-// export { default as TableOfContents } from './TableOfContents.svelte';
-// export { default as MobileTOC } from './MobileTOC.svelte';
-// export { default as CollapsibleSection } from './CollapsibleSection.svelte';
+// Gutter system components
+export { default as ContentWithGutter } from './ContentWithGutter.svelte';
+export { default as LeftGutter } from './LeftGutter.svelte';
+export { default as GutterItem } from './GutterItem.svelte';
+export { default as TableOfContents } from './TableOfContents.svelte';
+export { default as MobileTOC } from './MobileTOC.svelte';
+export { default as CollapsibleSection } from './CollapsibleSection.svelte';
 
-// Placeholder export to prevent empty module errors
 export const GUTTER_VERSION = '0.2.0';
