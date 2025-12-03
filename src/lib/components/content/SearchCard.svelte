@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Icons from './Icons.svelte';
-	import StatusBadge from './StatusBadge.svelte';
+	import Icons from '../icons/Icons.svelte';
+	import StatusBadge from '../indicators/StatusBadge.svelte';
 
 	interface Props {
 		id: string;

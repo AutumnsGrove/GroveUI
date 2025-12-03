@@ -4,7 +4,7 @@
 		TabsContent,
 		TabsList,
 		TabsTrigger
-	} from "$lib/components/ui/tabs";
+	} from "$lib/components/primitives/tabs";
 	import type { Snippet } from "svelte";
 
 	interface Tab {
@@ -47,8 +47,8 @@
 	}
 
 	let {
-		value = $bindable(tabs[0]?.value ?? ""),
 		tabs,
+		value = $bindable(tabs[0]?.value ?? ""),
 		content,
 		class: className,
 		children

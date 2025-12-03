@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Icons from './Icons.svelte';
-	import ScoreBar from './ScoreBar.svelte';
+	import Icons from '../icons/Icons.svelte';
+	import ScoreBar from '../indicators/ScoreBar.svelte';
 
 	interface Props {
 		name: string;

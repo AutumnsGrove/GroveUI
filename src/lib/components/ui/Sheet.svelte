@@ -8,7 +8,7 @@
 		SheetTitle,
 		SheetDescription,
 		SheetFooter
-	} from "$lib/components/ui/sheet";
+	} from "$lib/components/primitives/sheet";
 	import type { Snippet } from "svelte";
 
 	/**

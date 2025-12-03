@@ -6,7 +6,7 @@
 		CardDescription,
 		CardContent,
 		CardFooter
-	} from "$lib/components/ui/card";
+	} from "$lib/components/primitives/card";
 	import type { Snippet } from "svelte";
 	import { cn } from "$lib/utils";
 

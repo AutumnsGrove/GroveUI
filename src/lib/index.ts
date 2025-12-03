@@ -9,7 +9,7 @@
 // Core UI (from GroveEngine)
 export * from './components/ui/index.js';
 export * from './components/gallery/index.js';
-export * from './components/editor/index.js';
+// Editor component is in GroveEngine (domain-specific)
 
 // New categories (from GroveScout)
 export * from './components/indicators/index.js';

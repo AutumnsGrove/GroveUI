@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Textarea as ShadcnTextarea } from "$lib/components/ui/textarea";
+	import { Textarea as ShadcnTextarea } from "$lib/components/primitives/textarea";
 	import type { HTMLTextareaAttributes } from "svelte/elements";
 	import { cn } from "$lib/utils";
 

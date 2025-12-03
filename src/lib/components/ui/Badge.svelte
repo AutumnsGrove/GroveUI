@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Badge as ShadcnBadge } from "$lib/components/ui/badge";
+	import { Badge as ShadcnBadge } from "$lib/components/primitives/badge";
 	import type { Snippet } from "svelte";
 
 	type BadgeVariant = "default" | "secondary" | "destructive" | "tag";
@@ -24,12 +24,16 @@
 		variant?: BadgeVariant;
 		class?: string;
 		children?: Snippet;
+		onclick?: (e: MouseEvent) => void;
+		[key: string]: unknown;
 	}
 
 	let {
 		variant = "default",
 		class: className,
-		children
+		children,
+		onclick,
+		...restProps
 	}: Props = $props();
 
 	// Map tag variant to secondary styling
@@ -43,6 +47,6 @@
 	const shadcnVariant = $derived(variantMap[variant]);
 </script>
 
-<ShadcnBadge variant={shadcnVariant} class={className}>
+<ShadcnBadge variant={shadcnVariant} class={className} {onclick} {...restProps}>
 	{@render children?.()}
 </ShadcnBadge>

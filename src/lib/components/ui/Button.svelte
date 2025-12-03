@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { Button as ShadcnButton } from "$lib/components/ui/button";
+	import { Button as ShadcnButton } from "$lib/components/primitives/button";
 	import type { Snippet } from "svelte";
 	import type { HTMLButtonAttributes } from "svelte/elements";
 
-	type ButtonVariant = "primary" | "secondary" | "danger" | "ghost" | "link";
-	type ButtonSize = "sm" | "md" | "lg";
+	type ButtonVariant = "primary" | "secondary" | "danger" | "ghost" | "link" | "default" | "outline";
+	type ButtonSize = "sm" | "md" | "lg" | "icon";
 
 	/**
 	 * Button component wrapper around shadcn-svelte Button
@@ -44,19 +44,22 @@
 	}: Props = $props();
 
 	// Map our simplified variants to shadcn variants
-	const variantMap: Record<ButtonVariant, "default" | "secondary" | "destructive" | "ghost" | "link"> = {
+	const variantMap: Record<ButtonVariant, "default" | "secondary" | "destructive" | "ghost" | "link" | "outline"> = {
 		primary: "default",
 		secondary: "secondary",
 		danger: "destructive",
 		ghost: "ghost",
-		link: "link"
+		link: "link",
+		default: "default",
+		outline: "outline"
 	};
 
 	// Map our size variants to shadcn sizes
-	const sizeMap: Record<ButtonSize, "sm" | "default" | "lg"> = {
+	const sizeMap: Record<ButtonSize, "sm" | "default" | "lg" | "icon"> = {
 		sm: "sm",
 		md: "default",
-		lg: "lg"
+		lg: "lg",
+		icon: "icon"
 	};
 
 	const shadcnVariant = $derived(variantMap[variant]);

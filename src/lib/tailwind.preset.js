@@ -5,8 +5,9 @@
  * "a place to Be"
  */
 
-/** @type {import('tailwindcss').Config} */
+/** @satisfies {Partial<import('tailwindcss').Config>} */
 export default {
+  content: [], // Presets don't provide content paths - consumers configure this
   theme: {
     extend: {
       // ─────────────────────────────────────────────────────────────

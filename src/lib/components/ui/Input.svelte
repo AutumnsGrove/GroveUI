@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Input as ShadcnInput } from "$lib/components/ui/input";
+	import { Input as ShadcnInput } from "$lib/components/primitives/input";
 	import type { HTMLInputAttributes } from "svelte/elements";
 	import { cn } from "$lib/utils";
 
