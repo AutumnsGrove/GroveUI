@@ -7,7 +7,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [0.2.0] - Unreleased
+## [0.3.0] - 2025-12-03
+
+### Added
+- Generic CollapsibleSection component in ui/
+- BELONGS_IN_UI.md decision guide
+
+### Removed
+- Gutter system (moved to GroveEngine as domain-specific feature)
+  - ContentWithGutter, LeftGutter, GutterItem
+  - TableOfContents, MobileTOC
+  - CollapsibleSection (domain-specific version)
+  - GutterManager (editor component)
+  - Gutter utilities (parseAnchor, getAnchorKey, etc.)
+
+### Fixed
+- Circular dependency: IconLegend now uses local CollapsibleSection
+
+### Changed
+- Version bump: 0.2.0 → 0.3.0
+- Package exports updated (removed ./gutter)
+
+---
+
+## [0.2.0] - 2025-12-02
 
 ### Added
 

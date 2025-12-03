@@ -10,7 +10,6 @@
 export * from './components/ui/index.js';
 export * from './components/gallery/index.js';
 export * from './components/editor/index.js';
-export * from './components/gutter/index.js';
 
 // New categories (from GroveScout)
 export * from './components/indicators/index.js';
@@ -27,4 +26,3 @@ export * from './tokens/index.js';
 
 // Export utilities
 export { cn } from './utils/cn.js';
-export * from './utils/gutter.js';

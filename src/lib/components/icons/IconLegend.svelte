@@ -1,5 +1,5 @@
 <script>
-	import { CollapsibleSection } from '@autumnsgrove/groveengine';
+	import CollapsibleSection from '$lib/components/ui/CollapsibleSection.svelte';
 
 	let { iconsUsed = [] } = $props();
 

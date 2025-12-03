@@ -20,6 +20,7 @@ export { default as Sheet } from './Sheet.svelte';
 export { default as Toast } from './Toast.svelte';
 export { default as Skeleton } from './Skeleton.svelte';
 export { default as Table } from './Table.svelte';
+export { default as CollapsibleSection } from './CollapsibleSection.svelte';
 
 // Toast utility
 export * from './toast.js';

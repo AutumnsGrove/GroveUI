@@ -10,10 +10,9 @@
 
 GroveUI (`@groveengine/ui`) is the dedicated UI layer for the Grove ecosystem. It provides:
 
-- **UI Components** - Button, Card, Input, Dialog, Select, Tabs, Accordion, and more
+- **UI Components** - Button, Card, Input, Dialog, Select, Tabs, Accordion, CollapsibleSection, and more
 - **Gallery Components** - ImageGallery, Lightbox, ZoomableImage
-- **Editor Components** - MarkdownEditor, GutterManager
-- **Gutter System** - ContentWithGutter, TableOfContents, MobileTOC
+- **Editor Components** - MarkdownEditor
 - **Design Tokens** - Colors, typography, spacing, animations
 - **Tailwind Preset** - Ready-to-use Tailwind configuration
 
@@ -33,13 +32,12 @@ pnpm add @groveengine/ui
 
 ```typescript
 // Import everything
-import { Button, Card, ImageGallery, ContentWithGutter } from '@groveengine/ui';
+import { Button, Card, ImageGallery, CollapsibleSection } from '@groveengine/ui';
 
 // Or import from specific categories
-import { Button, Card, Input } from '@groveengine/ui/ui';
+import { Button, Card, Input, CollapsibleSection } from '@groveengine/ui/ui';
 import { ImageGallery, Lightbox } from '@groveengine/ui/gallery';
 import { MarkdownEditor } from '@groveengine/ui/editor';
-import { ContentWithGutter, TableOfContents } from '@groveengine/ui/gutter';
 
 // Import utilities
 import { cn } from '@groveengine/ui/utils';
@@ -81,6 +79,7 @@ Basic building blocks for interfaces:
 | `Toast` | Notifications |
 | `Skeleton` | Loading placeholders |
 | `Table` | Data tables |
+| `CollapsibleSection` | Expandable/collapsible content |
 
 ### Gallery Components (`@groveengine/ui/gallery`)
 
@@ -100,20 +99,8 @@ Content creation tools:
 | Component | Description |
 |-----------|-------------|
 | `MarkdownEditor` | Full-featured markdown editor |
-| `GutterManager` | Gutter annotation editor |
 
-### Gutter System (`@groveengine/ui/gutter`)
-
-The Grove annotation system:
-
-| Component | Description |
-|-----------|-------------|
-| `ContentWithGutter` | Main content with side annotations |
-| `LeftGutter` | Annotation container |
-| `GutterItem` | Individual annotation |
-| `TableOfContents` | Auto-generated TOC |
-| `MobileTOC` | Mobile navigation |
-| `CollapsibleSection` | Expandable content |
+> **Note**: The Gutter annotation system has been moved to `@autumnsgrove/groveengine` as it contains domain-specific logic.
 
 ---
 

@@ -1,13 +1,12 @@
 // GroveUI - Editor Components
 //
-// This module exports editor and admin components:
-// MarkdownEditor, GutterManager
+// This module exports editor components:
+// MarkdownEditor
 //
 // Usage:
-//   import { MarkdownEditor, GutterManager } from '@groveengine/ui/editor';
+//   import { MarkdownEditor } from '@groveengine/ui/editor';
 
 // Editor components
 export { default as MarkdownEditor } from './MarkdownEditor.svelte';
-export { default as GutterManager } from './GutterManager.svelte';
 
-export const EDITOR_VERSION = '0.2.0';
+export const EDITOR_VERSION = '0.3.0';
