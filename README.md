@@ -1,199 +1,104 @@
 # GroveUI
 
-**Grove Design System** - A calm, organic component library for the Grove platform.
+## Deprecated
 
-*"a place to Be"*
+This repository has been merged into [GroveEngine](https://github.com/AutumnsGrove/GroveEngine).
 
----
-
-## Overview
-
-GroveUI (`@groveengine/ui`) is the dedicated UI layer for the Grove ecosystem. It provides:
-
-- **UI Components** - Button, Card, Input, Dialog, Select, Tabs, Accordion, CollapsibleSection, and more
-- **Gallery Components** - ImageGallery, Lightbox, ZoomableImage
-- **Editor Components** - MarkdownEditor
-- **Design Tokens** - Colors, typography, spacing, animations
-- **Tailwind Preset** - Ready-to-use Tailwind configuration
-
-Built with **Svelte 5**, **TypeScript**, and **Tailwind CSS**.
+Please use `@autumnsgrove/groveengine/ui` instead of `@groveengine/ui`.
 
 ---
 
-## Installation
+## Migration Guide
 
-```bash
-pnpm add @groveengine/ui
-```
-
-## Quick Start
-
-### Import Components
-
-```typescript
-// Import everything
-import { Button, Card, ImageGallery, CollapsibleSection } from '@groveengine/ui';
-
-// Or import from specific categories
-import { Button, Card, Input, CollapsibleSection } from '@groveengine/ui/ui';
-import { ImageGallery, Lightbox } from '@groveengine/ui/gallery';
-import { MarkdownEditor } from '@groveengine/ui/editor';
-
-// Import utilities
-import { cn } from '@groveengine/ui/utils';
-import { colors } from '@groveengine/ui/tokens';
-```
-
-### Use the Tailwind Preset
+### Update your imports:
 
 ```javascript
-// tailwind.config.js
+// Old (deprecated)
+import { Button, Card } from '@groveengine/ui';
+import { ImageGallery } from '@groveengine/ui/gallery';
+import { cn } from '@groveengine/ui/utils';
+
+// New
+import { Button, Card } from '@autumnsgrove/groveengine/ui';
+import { ImageGallery } from '@autumnsgrove/groveengine/ui/gallery';
+import { cn } from '@autumnsgrove/groveengine/utils';
+```
+
+### Update your package.json:
+
+```json
+{
+  "dependencies": {
+    // Remove this:
+    "@groveengine/ui": "^X.X.X",
+
+    // Add this:
+    "@autumnsgrove/groveengine": "^0.4.0"
+  }
+}
+```
+
+### Update tailwind.config.js:
+
+```javascript
+// Old
 import grovePreset from '@groveengine/ui/tailwind';
 
-export default {
-  presets: [grovePreset],
-  content: ['./src/**/*.{html,js,svelte,ts}'],
-};
+// New
+import grovePreset from '@autumnsgrove/groveengine/ui/tailwind';
+```
+
+### Update CSS imports:
+
+```css
+/* Old */
+@import '@groveengine/ui/styles/grove.css';
+
+/* New */
+@import '@autumnsgrove/groveengine/ui/styles/grove.css';
 ```
 
 ---
 
-## Component Categories
+## Why the merge?
 
-### UI Components (`@groveengine/ui/ui`)
+The Grove platform components are now unified in a single package (`@autumnsgrove/groveengine`) for:
 
-Basic building blocks for interfaces:
-
-| Component | Description |
-|-----------|-------------|
-| `Button` | Primary, secondary, ghost, and link variants |
-| `Card` | Container with header, content, footer |
-| `Input` | Text input with validation states |
-| `Textarea` | Multi-line text input |
-| `Select` | Dropdown selection |
-| `Dialog` | Modal dialogs |
-| `Sheet` | Slide-out panels |
-| `Tabs` | Tab navigation |
-| `Accordion` | Collapsible sections |
-| `Badge` | Status indicators |
-| `Toast` | Notifications |
-| `Skeleton` | Loading placeholders |
-| `Table` | Data tables |
-| `CollapsibleSection` | Expandable/collapsible content |
-
-### Gallery Components (`@groveengine/ui/gallery`)
-
-Media display components:
-
-| Component | Description |
-|-----------|-------------|
-| `ImageGallery` | Grid of images with lightbox |
-| `Lightbox` | Full-screen image viewer |
-| `LightboxCaption` | Image captions |
-| `ZoomableImage` | Pinch-to-zoom image |
-
-### Editor Components (`@groveengine/ui/editor`)
-
-Content creation tools:
-
-| Component | Description |
-|-----------|-------------|
-| `MarkdownEditor` | Full-featured markdown editor |
-
-> **Note**: The Gutter annotation system has been moved to `@autumnsgrove/groveengine` as it contains domain-specific logic.
+- **Simpler dependency management** - One package instead of two
+- **Better versioning** - UI and engine features stay in sync
+- **Easier updates** - Single version bump covers everything
+- **Reduced duplication** - No shared code copied between packages
 
 ---
 
-## Design Tokens
+## New Package Structure
 
-GroveUI uses a carefully crafted color palette:
-
-### Colors
-
-```typescript
-// Primary: Grove Green
-grove: {
-  50: '#f0fdf4',
-  600: '#16a34a', // PRIMARY
-  900: '#14532d',
-}
-
-// Neutrals: Bark (dark) and Cream (light)
-bark: {
-  DEFAULT: '#3d2914',
-  ...
-}
-cream: {
-  DEFAULT: '#fefdfb',
-  ...
-}
 ```
-
-### Typography
-
-- **Serif** - Georgia for headings
-- **Sans** - System fonts for body
-- **Mono** - SF Mono for code
-
-### Animations
-
-Organic, nature-inspired animations:
-- `fade-in`, `fade-out`, `fade-in-up`
-- `grow`, `shrink`, `bloom`
-- `leaf-fall`, `leaf-sway`
-- `slide-in-*` variants
-
----
-
-## Development
-
-```bash
-# Install dependencies
-pnpm install
-
-# Start dev server
-pnpm dev
-
-# Build
-pnpm build
-
-# Build package for npm
-pnpm package
-
-# Type check
-pnpm check
+@autumnsgrove/groveengine
+├── /ui              - All GroveUI components
+│   ├── /gallery     - ImageGallery, Lightbox, ZoomableImage
+│   ├── /charts      - BarChart, LineChart
+│   ├── /content     - MarkdownRenderer, CodeBlock
+│   ├── /forms       - SearchInput, FormField
+│   ├── /indicators  - LoadingSpinner, ProgressBar
+│   ├── /icons       - Icon components
+│   ├── /states      - EmptyState, ErrorState
+│   └── /styles      - CSS tokens and themes
+├── /utils           - Utility functions
+├── /auth            - Authentication utilities
+├── /server          - Server-side helpers
+├── /config          - Configuration
+└── /payments        - Stripe integration
 ```
 
 ---
 
-## Architecture
+## Links
 
-GroveUI is part of the Grove ecosystem:
-
-```
-┌─────────────────────────────────────────────────┐
-│  GroveUI (@groveengine/ui)                      │
-│  └── UI components, tokens, styles             │
-└─────────────────────────────────────────────────┘
-                      ↑ imports
-┌─────────────────────────────────────────────────┐
-│  GroveEngine (@groveengine/engine)              │
-│  └── Blog engine, auth, markdown, payments     │
-└─────────────────────────────────────────────────┘
-                      ↑ powers
-┌─────────────────────────────────────────────────┐
-│  grove.place websites                           │
-│  └── Multi-tenant blogs on Cloudflare          │
-└─────────────────────────────────────────────────┘
-```
+- **New Package**: [@autumnsgrove/groveengine on NPM](https://www.npmjs.com/package/@autumnsgrove/groveengine)
+- **Repository**: [github.com/AutumnsGrove/GroveEngine](https://github.com/AutumnsGrove/GroveEngine)
+- **Migration Template**: [CLIENT_TEMPLATE.md](https://github.com/AutumnsGrove/GroveEngine/blob/main/packages/engine/CLIENT_TEMPLATE.md)
 
 ---
 
-## License
-
-MIT
-
----
-
-**Demo Site**: [ui.grove.place](https://ui.grove.place)
-**Repository**: [github.com/AutumnsGrove/GroveUI](https://github.com/AutumnsGrove/GroveUI)
+*This repository is archived and no longer maintained.*
